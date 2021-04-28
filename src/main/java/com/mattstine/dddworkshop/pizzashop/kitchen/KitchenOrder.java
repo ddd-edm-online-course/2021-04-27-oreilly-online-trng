@@ -110,7 +110,7 @@ public final class KitchenOrder implements Aggregate {
 
     @Override
     public OrderState state() {
-        return null;
+        return new OrderState(ref, onlineOrderRef, pizzas);
     }
 
     enum State {
@@ -149,5 +149,8 @@ public final class KitchenOrder implements Aggregate {
 
     @Value
     static class OrderState implements AggregateState {
+        KitchenOrderRef ref;
+        OnlineOrderRef onlineOrderRef;
+        List<Pizza> pizzas;
     }
 }
